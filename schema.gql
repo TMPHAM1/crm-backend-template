@@ -1,0 +1,46 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type AccessToken {
+  createdAt: DateTime!
+  id: Float!
+  value: String!
+}
+
+input AuthInput {
+  password: String!
+  username: String!
+}
+
+type AuthResponse {
+  access_token: String!
+}
+
+input CreateUserInput {
+  email: String!
+  password: String!
+  username: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Mutation {
+  createAccessToken(value: String!): AccessToken!
+  createUser(createUserInput: CreateUserInput!): User!
+  login(authInput: AuthInput!): AuthResponse!
+}
+
+type Query {
+  accessTokens: [AccessToken!]!
+  me: User!
+  users: [User!]!
+}
+
+type User {
+  email: String
+  password: String!
+}
